@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+<script type="text/javascript" src="DeckOfCardApp.js"></script>
+
+</script>
+</head>
+
+<body>
+
+<div id="card_container">
+	<div style="clear: both">
+		<h2 style="float: left">Deck Of cards</h2>
+		<h3 style="float: right">Drawn Cards</h3>
+	</div>
+	<div id="deck"></div>
+	<div id="drawn_cards_container"></div>
+	<input type="button" value="Sort" onclick="DeckOfCardApp.sortDrawnCards()" class="btn-sort" id="sort">
+</div>
+<div>
+	<label for="male">Number of Cards to be drawn:</label>
+	<input type="number"max="52" min="2" id="no_of_cards" />
+	<input type="button" value="Draw" onclick="DeckOfCardApp.drawCards()" class="btn-deck" id="draw">
+	<input type="button" value="Shuffle" onclick="DeckOfCardApp.loadCards()" class="btn-deck" id="shuffle">
+	<input type="button" value="Reset" onclick="DeckOfCardApp.resetCards()" class="btn-deck" id="reset">
+</div>
+</body>
+</html>
+<p>
+1.Application is created by pure javascript (Vanila JavaScript), html5 and css.
+</p>
+<p>
+<h2>How to use :</h2>
+</p>
+<p>
+1. after download user need's to open the index.html file. 
+</p>
+<p>
+2. There will be two panels. left and right. In left panel deck of cards will be loaded and right panel will be empty. 
+</p>
+<p>
+3. Under the left panel, there will be thee buttons  Draw, Shuffle and Reset. Reset button will be disabled by dedault.
+</p>
+<p>
+4. By click Shuffle button, cards will be shuffled. 
+</p>
+<p>
+5. User need to put a valid input i.e numeric and less than 52 to draw a number of cards.
+</p>
+<P>
+6. When user will click on the Draw button after put valid entry in the input box. number of cards will be goes to right panel. And Sort button will be activated. User can sort those drawn cards by clicking the button.
+</p>
+<p>
+7.When User will click on reset button, cards will be reset.
+<p>
