@@ -57,10 +57,10 @@ DeckOfCardApp.loadCards = function(){
 	deck = DeckOfCardApp.getDeckOfCards();
 	DeckOfCardApp.shuffleCards(deck);
 	DeckOfCardApp.renderCards("deck",deck);
-	document.getElementById("reset").disabled = true;
-	document.getElementById("reset").setAttribute("disabled", true);
-	document.getElementById("sort").disabled = true;
-	document.getElementById("sort").setAttribute("disabled", true);
+	document.getElementById("reset");
+	//document.getElementById("reset").setAttribute("disabled", true);
+	document.getElementById("sort");
+	//document.getElementById("sort").setAttribute("disabled", true);
 };
 
 DeckOfCardApp.drawCards = function(){
@@ -77,10 +77,10 @@ DeckOfCardApp.drawCards = function(){
 			DeckOfCardApp.renderCards("deck",deck);
 			DeckOfCardApp.renderCards("drawn_cards_container", DeckOfCardApp.drawnCards);
 			document.getElementById("no_of_cards").value = "";
-			document.getElementById("reset").disabled = false;
-			document.getElementById("reset").removeAttribute("disabled");
-			document.getElementById("sort").disabled = false;
-			document.getElementById("sort").removeAttribute("disabled");
+			document.getElementById("reset");
+			//document.getElementById("reset").removeAttribute("disabled");
+			document.getElementById("sort");
+			//document.getElementById("sort").removeAttribute("disabled");
 	}	
 };
 
@@ -91,10 +91,48 @@ DeckOfCardApp.resetCards = function(){
 };
 DeckOfCardApp.sortDrawnCards = function (){
 	if(DeckOfCardApp.drawnCards.length > 0){
-		DeckOfCardApp.drawnCards.sort(function(a, b){return b.Rank - a.Rank});
+		console.log(DeckOfCardApp.drawnCards);
+		var cards = {
+                "clubs": [],
+                "spades": [],
+                "hearts": [],
+                "diamonds": []
+            };
+		for(var i=0; i<DeckOfCardApp.drawnCards.length;i++){	
+		switch (DeckOfCardApp.drawnCards[i].Suit) {
+                    case 'Clubs':
+                        cards.clubs.push(DeckOfCardApp.drawnCards[i]);
+                        break;
+                    case 'Spades':
+                        cards.spades.push(DeckOfCardApp.drawnCards[i]);
+                        break;
+                    case 'Hearts':
+                        cards.hearts.push(DeckOfCardApp.drawnCards[i]);
+                        break;
+                    case 'Diamonds':
+                        cards.diamonds.push(DeckOfCardApp.drawnCards[i]);
+                        break;
+                    default:
+                        break;
+                }
+		}
+           cards.clubs.sort(function(a, b) {
+                return a.Rank - b.Rank
+            });
+            cards.spades.sort(function(a, b) {
+                return a.Rank - b.Rank
+            });
+            cards.hearts.sort(function(a, b) {
+                return a.Rank - b.Rank
+            });
+            cards.diamonds.sort(function(a, b) {
+                return a.Rank - b.Rank
+            });				
+		DeckOfCardApp.drawnCards = cards.clubs.concat(cards.spades).concat(cards.hearts).concat(cards.diamonds);
+		cards = {};
 		DeckOfCardApp.renderCards("drawn_cards_container", DeckOfCardApp.drawnCards);
 	}
-};	
+};		
 
 window.onload = DeckOfCardApp.loadCards;
 
